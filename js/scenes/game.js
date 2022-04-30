@@ -7,7 +7,7 @@ class GameScene extends Phaser.Scene {
 		this.correct = 0;
     }
 
-    preload (){	
+    preload (){
 		this.load.image('back', '../resources/back.png');
 		this.load.image('cb', '../resources/cb.png');
 		this.load.image('co', '../resources/co.png');
@@ -19,6 +19,7 @@ class GameScene extends Phaser.Scene {
 	
     create (){	
 		let arraycards = ['co', 'sb', 'co', 'sb'];
+		arraycards.sort (function() {return Math.random() - 0.5});
 		this.cameras.main.setBackgroundColor(0xBFFCFF);
 		
 		this.add.image(250, 300, arraycards[0]);
