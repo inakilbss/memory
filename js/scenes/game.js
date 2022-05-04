@@ -70,8 +70,18 @@ class GameScene extends Phaser.Scene {
 					this.secondClick = null;
 				}
 				else if (this.firstClick){
-					if (this.firstClick.card_id !== card.card_id){
-						this.score -= 20;
+					if (this.firstClick.card_id !== card.card_id) {
+						let penalty;
+						if (this.options_data.difficulty === "easy") {
+							penalty = 20;
+						}
+						else if (this.options_data.difficulty === "hard") {
+							penalty = 50;
+						}
+						else {
+							penalty = 30;
+						}
+						this.score -= penalty;
 						if (this.score <= 0){
 							alert("Game Over");
 							loadpage("../");
